@@ -3,10 +3,27 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import styles from './page.module.css'
 import LogoBanner from './components/LogoBanner'
+import Header from './components/Header'
 
 export default function Home() {
   const rotatingTexts = ["Drive Growth", "Ship your MVP", "Launch New Verticals", "Find PMF"]
   const [currentTextIndex, setCurrentTextIndex] = useState(0)
+  const [isHovering, setIsHovering] = useState(false)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  const images = [
+    '/Statue1.png',
+    '/Statue2.png',
+    '/Statue3.png',
+    '/Statue4.png'
+  ];
+
+  const invertedImages = [
+    '/StatueInvert1.png',
+    '/StatueInvert2.png',
+    '/StatueInvert3.png',
+    '/StatueInvert4.png'
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -16,41 +33,44 @@ export default function Home() {
     return () => clearInterval(interval)
   }, [])
 
-  return (
-    <main className={styles.main}>
-      <nav className={styles.nav}>
-        <h1 className={styles.logo}>hypatia</h1>
-      </nav>
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }, 300);
 
-      <div className={styles.container}>
-        <div className={styles.headerText}>
-          <div className={styles.rotatingTextWrapper}>
-            <span className={styles.rotatingText}>
-              {rotatingTexts[currentTextIndex]}
-            </span>
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <>
+      <Header isHovering={isHovering} />
+      <main className={`${styles.main} ${isHovering ? styles.mainHovered : ''}`}>
+        <div className={styles.container}>
+          <div className={styles.imageContainer}>
+            <Image 
+              src={isHovering ? invertedImages[currentImageIndex] : images[currentImageIndex]}
+              alt="Statue sequence"
+              width={400}
+              height={400}
+              className={styles.image}
+              priority
+            />
           </div>
 
-          <p className={styles.subtext}>
-            with beautiful, native iOS
-          </p>
+          <div className={styles.contentColumn}>
+            <p className={styles.description}>
+              Startups backed by <span className={styles.highlight}>a16z</span>, <span className={styles.highlight}>Thrive Capital</span>, <span className={styles.highlight}>YCombinator</span>, and <span className={styles.highlight}>Peter Thiel</span> trust us to drive design & product excellence.
+            </p>
+            <button 
+              className={styles.cta}
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            >
+              see work →
+            </button>
+          </div>
         </div>
-
-        <div className={styles.imageContainer}>
-          <Image 
-            src="/statue.gif"
-            alt="Demo GIF"
-            width={200}
-            height={200}
-            className={styles.image}
-          />
-        </div>
-
-        <p className={styles.description}>
-          We help businesses ship ideas and unlock new revenue streams with beautiful consumer-facing products.
-        </p>
-
-        <LogoBanner />
-      </div>
-    </main>
+      </main>
+    </>
   )
 } 

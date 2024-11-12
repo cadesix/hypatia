@@ -7,28 +7,40 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-ppmondwest), sans-serif;
+  transition: background-color 0.2s ease;
+}
+
+.mainHovered {
+  background-color: #2F00FF;
+  color: white;
 }
 
 .nav {
-  width: 100%;
-  padding: 1rem;
+  padding: 1rem 2rem;
   display: flex;
-  justify-content: center;
   position: absolute;
   top: 0;
+  width: 100%;
+  justify-content: center;
+  background: transparent;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 100;
+  transition: color 0.2s ease;
+  color: black;
+}
+
+.mainHovered .logo {
+  color: white;
 }
 
 .container {
-  max-width: 64rem;
-  text-align: center;
   display: flex;
-  flex-direction: column;
-  gap: 32px;
+  max-width: 700px;
+  align-items: center;
+  gap: 2rem;
 }
 
 .rotatingTextWrapper {
@@ -48,34 +60,93 @@
 }
 
 .imageContainer {
-  width: 200px;
+  width: 250px;
   height: fit-content;
-  margin: 0 auto;
-  display: block;
 }
 
 .image {
-  display: block;
-  width: 100%;
+  width: 250px;
   height: auto;
-  max-height: 200px;
-  object-fit: contain;
+  max-height: 250px;
+  transition: opacity 0.2s ease;
 }
 
 .description {
   font-size: 24px;
   max-width: 48rem;
   margin: 0 auto;
+  text-align: left;
 }
 
-@media (min-width: 768px) {
-  .rotatingText {
-    font-size: 3.75rem;
-    line-height: 1;
+.highlight {
+  color: #2F00FF;
+  transition: color 0.2s ease;
+}
+
+.mainHovered .highlight {
+  color: white;
+}
+
+.cta {
+  background-color: #2F00FF;
+  color: white;
+  border: none;
+  padding: 6px 8px;
+  font-size: 24px;
+  width: fit-content;
+  align-self: flex-start;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.2s ease;
+}
+
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 24px;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .cta {
+    font-size: 24px;
+    padding: 8px 8px;
+    align-self: center;
   }
   
-  .subtext {
-    font-size: 1.5rem;
-    line-height: 2rem;
+  .contentColumn {
+    gap: 3rem;
+    align-items: center;
+  }
+}
+
+/* For even smaller screens (iPhone SE, etc) */
+@media (max-width: 380px) {
+  .logo {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 24px;
+  }
+
+  .cta {
+    font-size: 24px;
   }
 }

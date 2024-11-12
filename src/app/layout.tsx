@@ -1,5 +1,6 @@
 import './globals.css'
 import localFont from 'next/font/local'
+import Header from './components/Header'
 
 const ppMondwest = localFont({
   src: './fonts/PPMondwest-Regular.otf',
@@ -14,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={ppMondwest.className}>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }

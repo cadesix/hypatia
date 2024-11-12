@@ -1,0 +1,93 @@
+.main {
+  min-height: 100vh;
+  transition: background-color 0.2s ease;
+  background-color: white;
+  color: black;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.contentColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  font-size: 24px;
+  max-width: 900px;
+}
+
+.blue {
+  color: #2F00FF;
+  transition: color 0.2s ease;
+}
+
+.mainHovered .highlight {
+  color: white;
+}
+
+.linksHeader {
+  font-size: 24px;
+  margin-bottom: 2rem;
+  font-weight: normal;
+}
+
+.linksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  justify-content: center;
+}
+
+.linkColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.link {
+  color: #2F00FF;
+  text-decoration: underline;
+  font-size: 24px;
+  transition: color 0.2s ease;
+}
+
+.columnHeader {
+    font-weight: 100;
+}
+
+
+@media (max-width: 768px) {
+    .description {
+      font-size: 36px;
+      padding: 0 1rem;
+    }
+  }
+  
+  @media (max-width: 380px) {
+    .description {
+      font-size: 32px;
+    }
+  }
+  
+
+@media (max-width: 768px) {
+  .linksContainer {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .link {
+    font-size: 36px;
+  }
+
+  .linksHeader {
+    font-size: 36px;
+  }
+} 
