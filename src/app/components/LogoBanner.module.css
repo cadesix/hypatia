@@ -1,0 +1,31 @@
+.banner {
+  width: 100%;
+  overflow: hidden;
+  background: white;
+  padding: 20px 0;
+}
+
+.slider {
+  display: flex;
+  animation: scroll 20s linear infinite;
+  width: 100vw;
+}
+
+.slide {
+  flex: 0 0 auto;
+  margin: 0 8px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause animation on hover */
+.slider:hover {
+  animation-play-state: paused;
+} 
