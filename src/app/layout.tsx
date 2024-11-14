@@ -8,6 +8,14 @@ const ppMondwest = localFont({
   display: 'swap',
 })
 
+export const metadata = {
+  title: 'Hypatia',
+  description: 'Design & Product Excellence',
+  icons: {
+    icon: '/favicon.png',
+  },
+}
+
 export default function RootLayout({
   children,
 }: {
