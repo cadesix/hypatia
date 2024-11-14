@@ -1,6 +1,7 @@
 import './globals.css'
 import localFont from 'next/font/local'
 import Header from './components/Header'
+import { Analytics } from '@vercel/analytics/react'
 
 const ppMondwest = localFont({
   src: './fonts/PPMondwest-Regular.otf',
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
+        <Analytics />
       </body>
     </html>
   )
