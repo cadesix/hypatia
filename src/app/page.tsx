@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from './page.module.css'
 import LogoBanner from './components/LogoBanner'
 import Header from './components/Header'
+import Link from 'next/link'
 
 export default function Home() {
   const rotatingTexts = ["Drive Growth", "Ship your MVP", "Launch New Verticals", "Find PMF"]
@@ -61,13 +62,23 @@ export default function Home() {
             <p className={styles.description}>
               Startups backed by <span className={styles.highlight}>a16z</span>, <span className={styles.highlight}>Thrive Capital</span>, <span className={styles.highlight}>YCombinator</span>, and <span className={styles.highlight}>Peter Thiel</span> trust us to drive design & product excellence.
             </p>
-            <button 
+            {/* Temporarily using anchor tag for email, but keeping Link structure in comments for future use */}
+            {/* <Link 
+              href="/work" 
               className={styles.cta}
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             >
               see work →
-            </button>
+            </Link> */}
+            <a 
+              href="mailto:cade@hypatia.nyc" 
+              className={styles.cta}
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            >
+              work with us →
+            </a>
           </div>
         </div>
       </main>
