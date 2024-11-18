@@ -59,7 +59,6 @@ const Work = () => {
 
   return (
     <main className={styles.main}>
-      <Header />
       <div className={styles.container}>
         <div className={styles.stacksRow}>
           {Object.values(projects).map((project, index) => (

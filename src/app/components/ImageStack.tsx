@@ -11,20 +11,25 @@ interface ImageStackProps {
 export default function ImageStack({ images, url }: ImageStackProps) {
   const [isMobile, setIsMobile] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
+  const [windowWidth, setWindowWidth] = useState(0)
 
   useEffect(() => {
-    const checkMobile = () => {
+    // Set initial values
+    setWindowWidth(window.innerWidth)
+    
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
       setIsMobile(window.innerWidth <= 768)
     }
     
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
-    return () => window.removeEventListener('resize', checkMobile)
+    handleResize() // Initial check
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   const getStyles = (index: number, totalImages: number) => {
-    const baseOffset = window.innerWidth <= 480 ? 15 : 20
-    const hoverOffset = window.innerWidth <= 480 ? 30 : 40
+    const baseOffset = windowWidth <= 480 ? 15 : 20
+    const hoverOffset = windowWidth <= 480 ? 30 : 40
     const baseRotation = 1.5
     const hoverRotation = 2.5
     const baseOpacity = 0.85
