@@ -1,0 +1,25 @@
+.stackContainer {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  display: inline-block;
+}
+
+.imageWrapper {
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.stackImage {
+  width: 10rem;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .stackImage {
+    width: 80vw;
+    max-width: 300px;
+  }
+} 
