@@ -43,6 +43,7 @@ const Work = () => {
       ],
       title: 'Typesage',
       description: 'Self-Discovery Chatbot',
+      url: '#'
     },
     discz: {
       images: [
