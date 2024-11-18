@@ -63,22 +63,22 @@ export default function Home() {
               Startups backed by <span className={styles.highlight}>a16z</span>, <span className={styles.highlight}>Thrive Capital</span>, <span className={styles.highlight}>YCombinator</span>, and <span className={styles.highlight}>Peter Thiel</span> trust us to drive design & product excellence.
             </p>
             {/* Temporarily using anchor tag for email, but keeping Link structure in comments for future use */}
-            {/* <Link 
+            <Link 
               href="/work" 
               className={styles.cta}
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             >
               see work →
-            </Link> */}
-            <a 
+            </Link>
+            {/* <a 
               href="mailto:cade@hypatia.nyc" 
               className={styles.cta}
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
             >
               work with us →
-            </a>
+            </a> */}
           </div>
         </div>
       </main>
