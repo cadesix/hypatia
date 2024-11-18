@@ -7,7 +7,7 @@ interface Project {
   images: string[];
   title: string;
   description: string;
-  url: string;
+  url?: string;
 }
 
 const Work = () => {

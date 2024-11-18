@@ -74,36 +74,27 @@ export default function ImageStack({ images, url }: ImageStackProps) {
     }
   }
 
-  if (isMobile) {
-    return (
-      <a href={url} target="_blank" rel="noopener noreferrer" className={styles.stackLink}>
-        <div className={styles.mobileContainer}>
-          <Image
-            src={images[images.length - 1]}
-            alt="Project image"
-            width={300}
-            height={200}
-            className={styles.mobileImage}
-            sizes="(max-width: 768px) 100vw, 300px"
-          />
-        </div>
-      </a>
-    )
-  }
-
-  return (
-    <a href={url} target="_blank" rel="noopener noreferrer" className={styles.stackLink}>
-      <div 
-        className={styles.stackContainer}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-        style={{
-          height: '500px',
-          filter: isHovering ? 'drop-shadow(0 15px 30px rgba(0,0,0,0.2))' : 'none',
-          transition: 'filter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)'
-        }}
-      >
-        {images.map((image, index) => (
+  const Content = (
+    <div className={isMobile ? styles.mobileContainer : styles.stackContainer}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+      style={!isMobile ? {
+        height: '500px',
+        filter: isHovering ? 'drop-shadow(0 15px 30px rgba(0,0,0,0.2))' : 'none',
+        transition: 'filter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)'
+      } : undefined}
+    >
+      {isMobile ? (
+        <Image
+          src={images[images.length - 1]}
+          alt="Project image"
+          width={300}
+          height={200}
+          className={styles.mobileImage}
+          sizes="(max-width: 768px) 100vw, 300px"
+        />
+      ) : (
+        images.map((image, index) => (
           <div 
             key={index}
             className={styles.imageWrapper}
@@ -118,8 +109,14 @@ export default function ImageStack({ images, url }: ImageStackProps) {
               sizes="(max-width: 480px) 140px, (max-width: 768px) 200px, 300px"
             />
           </div>
-        ))}
-      </div>
-    </a>
+        ))
+      )}
+    </div>
   )
+
+  return url ? (
+    <a href={url} target="_blank" rel="noopener noreferrer" className={styles.stackLink}>
+      {Content}
+    </a>
+  ) : Content
 } 
